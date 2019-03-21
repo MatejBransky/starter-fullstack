@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "name": "starter-fullstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MatejBransky/starter-fullstack.git",
+  "license": "MIT",
+  "scripts": {
+    "serve": "cd ./server && env-cmd ../.env yarn start",
+    "start": "cd ./client && env-cmd ../.env yarn start",
+    "test": "env-cmd ./.env cypress open"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "cypress": "^3.2.0",
+    "env-cmd": "^8.0.2",
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-cypress": "^2.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "hooks": {
+    "pre-commit": [
+      "lint-staged"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint --ext js --ext jsx",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "{*.{json,md}}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
