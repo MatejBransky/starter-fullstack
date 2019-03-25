@@ -3,7 +3,15 @@ module.exports = (sequelize, DataTypes) => {
   const Context = sequelize.define(
     'Context',
     {
-      name: DataTypes.STRING,
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      name: {
+        type: DataTypes.STRING,
+      },
     },
     {}
   );
