@@ -3,7 +3,22 @@ module.exports = (sequelize, DataTypes) => {
   const Task = sequelize.define(
     'Task',
     {
-      name: DataTypes.STRING,
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [3, 50],
+            msg: 'Your to-do item name must be between 3 and 50',
+          },
+        },
+      },
       done: DataTypes.BOOLEAN,
       description: DataTypes.TEXT,
     },
