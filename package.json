@@ -26,17 +26,20 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4"
   },
-  "hooks": {
-    "pre-commit": [
-      "lint-staged"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": [
+        "lint-staged"
+      ]
+    }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "{client,server}/src/**/*.{js,jsx}": [
+      "prettier --write",
       "eslint --ext js --ext jsx",
       "git add"
     ],
-    "src/**/*.scss": [
+    "client/src/**/*.scss": [
       "prettier --write",
       "stylelint --fix",
       "git add"
