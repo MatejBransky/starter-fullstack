@@ -34,7 +34,7 @@
     }
   },
   "lint-staged": {
-    "{client,server}/src/**/*.{js,jsx}": [
+    "{client/src,server}/**/*.{js,jsx}": [
       "prettier --write",
       "eslint --ext js --ext jsx",
       "git add"
