@@ -24,8 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Task.associate = function(/*models*/) {
+  Task.associate = function(models) {
     // associations can be defined here
+    Task.belongsTo(models.Context, {
+      foreignKey: 'ContextId',
+      onDelete: 'CASCADE',
+    });
   };
   return Task;
 };
